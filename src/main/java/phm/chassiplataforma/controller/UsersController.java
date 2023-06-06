@@ -19,12 +19,10 @@ import phm.chassiplataforma.service.UserService;
 public class UsersController {
 
     private UserService userService;
-    private UsersRepository usersRepository;
     private AdsRepository adsRepository;
 
-
     @GetMapping("users/new")
-    public String signIn(Model model){
+    public String newUser(Model model){
         try {
             Users users = new Users();
             model.addAttribute("users", users);
@@ -39,6 +37,18 @@ public class UsersController {
     public String saveUsers(@ModelAttribute("users") Users users) throws Exception {
         userService.createNewUser(users);
         return "redirect:/users/new";
+
+    }
+
+    @PostMapping("sign-in")
+    public String auth(@ModelAttribute("users") Users users){
+        if(userService.signIn(users).equals(Boolean.TRUE)){
+            return "redirect:/index";
+        }else{
+            return "login";
+        }
+
+
 
     }
 
@@ -58,9 +68,7 @@ public class UsersController {
     @PostMapping("/ads")
     public String saveAds(@ModelAttribute("ads") Ads ads) throws Exception {
         adsRepository.save(ads);
-        System.out.println(ads);
         return "redirect:/ads/new";
-
     }
 
     @GetMapping("ads/new")
@@ -73,6 +81,11 @@ public class UsersController {
             return "index";
         }
         return "form-ads";
+    }
+
+    @GetMapping("login")
+    public String getLogin(Users users){
+        return "login";
     }
 
 

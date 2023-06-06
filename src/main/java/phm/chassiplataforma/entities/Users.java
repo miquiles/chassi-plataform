@@ -1,13 +1,13 @@
 package phm.chassiplataforma.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import lombok.*;
+import phm.chassiplataforma.entities.enums.StatusUser;
 
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,9 +20,16 @@ public class Users implements Serializable {
 
     private UUID uuid;
     private String name;
+    @Column(length = 50)
     private String mail;
+    private String document;
     private String password;
-    private Boolean status;
+    private StatusUser status;
+    private String cellPhone;
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @Column(nullable = false)
+    private List<Company> companyes;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

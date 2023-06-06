@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
-	<title>Cadastro Usuarios</title>
+	<title>Login</title>
 
 	
     <!--<link rel="stylesheet" type="text/css" href="../static/style.css"/>-->
@@ -32,42 +32,38 @@
 					<div class="d-table-cell align-middle">
 					
 						<div class="text-center mt-4">
-							<h1 class="h2"> Vamos começar dessa forma</h1>
-							<p class="lead">
-								informe seus dados e tenha acesso a plataforma
-							</p>
+							<h1 class="h2"> LOGO</h1>
 						</div>
 
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form th:action="@{/users}" th:object="${users}" method="POST" >
+									<form th:action="@{/sign-in}" th:object="${users}" method="POST" >
 
-	
-										<div class="mb-3">
-											<label class="form-label">Nome completo</label>
-											<input th:field="*{name}" class="form-control form-control-lg" type="name" name="name" placeholder="Entre com seu nome" required />
-										</div>
+
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input th:field="*{mail}" class="form-control form-control-lg" type="mail" name="mail" placeholder="exemplo@email.com" required/>
-										</div>
-										<div class="mb-3">
-											<label class="form-label">CPF</label>
-											<input th:field="*{document}" class="form-control form-control-lg" type="document" name="document" placeholder="***.***.***-**" required/>
+											<input th:field="*{setMail(mail)}" class="form-control form-control-lg" type="mail" name="mail" placeholder="exemplo@email.com" required/>
 										</div>
 
 										<div class="mb-3">
 											<label class="form-label">Senha</label>
 											<input th:field="*{password}" class="form-control form-control-lg" type="password" name="password" placeholder="*****" required />
+											<div class="col-auto">
+    <span id="passwordHelpInline" class="form-text">
+      Podendo ser 8-20 caracteres.
+    </span>
+											</div>
+
 										</div>
-										<div class="mb-3">
-											<label class="form-label">Telefone</label>
-											<input th:field="*{cellPhone}" class="form-control form-control-lg" type="cellPhone" name="cellPhone" placeholder="(  )_____-____" required/>
-										</div>
+
 										<div class="d-grid gap-2">
 											<!-- <a href="index.html" class="btn btn-lg btn-primary">Sign up</a> -->
-												<button type="submit" class="btn btn-lg btn-primary">Salvar</button>
+												<button type="submit" class="btn btn-lg btn-primary">Entrar</button>
+											<div class="form-text">
+											<a>Nao possuo cadastro</a>
+											<a>Esqueci minha senha</a>
+											</div>
 										</div>
 									</form>
 								</div>

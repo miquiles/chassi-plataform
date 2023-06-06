@@ -5,8 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import phm.chassiplataforma.entities.enums.StatusPayment;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -19,7 +21,7 @@ public class Ads implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private UUID uuid;
     private String url;
     private String title;
     private String description;
@@ -27,4 +29,6 @@ public class Ads implements Serializable {
     private String adsGoals;
     private Double investment;
     private Double dailyInvestment;
+    private StatusPayment status;
+
 }
